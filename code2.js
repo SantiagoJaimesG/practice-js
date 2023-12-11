@@ -49,20 +49,30 @@ for(alumno in alumnostotales){
     }else{resultado+="<br><br>"}document.write(resultado);
 }*/
 
-let operacion = prompt("Digite la operacion a realizar:"),
+let operacion = prompt("Digite la operacion a realizar 1=+, 2=-, 3=*, 4=/ :"),
 num1 = prompt("Digite el primer numero"), num2 = prompt("Digite el segundo numero");
+num1 = parseInt(num1), num2 = parseInt(num2), operacion = parseInt(operacion);
 
 let oper = (operacion,num1,num2)=>{
-    if (operacion == 1){
-        resultado = num1 + num2;
-        return parseInt(resultado)
-    }
-    else if (operacion == 2){
-        resultado = num1 - num2;
-        return parseInt(resultado)
-    }
-    else{resultado = "Operacion no valida"
-    return resultado}
+    switch (operacion) {
+        case 1:
+            resultado = num1 + num2;
+            break;
+        case 2:
+            resultado = num1 - num2;
+            break;
+        case 3:
+            resultado = num1 * num2;
+            break;
+        case 4:
+            resultado = num1 / num2;
+            break;
+        default:
+            document.write("Operacion invalida");
+            break;
+    }  
+    
+    return resultado;
 }
 
-document.write(oper());
+document.write(oper(operacion,num1,num2));
