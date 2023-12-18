@@ -1,5 +1,5 @@
 //METODOS DE CADENAS
-let cadena = "hola cadena de prueba", cadena2 = "cadena de prueba";
+/*let cadena = "hola cadena de prueba", cadena2 = "cadena de prueba";
 //junta dos cadenas de texto y retorna una nueva .concat()
 resultado = cadena.concat(cadena2);
 document.write(resultado + "<br><br>");
@@ -87,11 +87,25 @@ document.write(fin9 + "<br><br>");
 fin10 = nombres.filter(nombre => nombre.length > 5);
 document.write(fin10 + "<br><br>");
 //muestra un array en bucle .forEach()
-nombres.forEach(function(nombre){document.write(nombre + "<br>")});
+nombres.forEach(function(nombre){document.write(nombre + "<br><br>")});*/
 
 
 //OBJETO MATH BASICO
-
-
+//raiz cuadrada de un numero Math.sqrt()
+numero = Math.sqrt(27);
+document.write(numero + "<br><br>");
+//raiz cubica de un numero Math.cbrt()
+numero2 = Math.cbrt(27);
+document.write(numero2 + "<br><br>");
+//devuelve el numero mas grande Math.max()
+numero3 = Math.max(27,45,78,14,47,23);
+document.write(numero3 + "<br><br>");
+//devuelve el numero mas pequeño Math.min()
+numero4 = Math.min(27,45,78,14,47,23);
+document.write(numero4 + "<br><br>");
+//devuelve numero aleatoreo Math.random() y redondea con Math.round()
+numero5 = Math.random()*100;
+numero5 = Math.round(numero5);
+document.write(numero5 + "<br><br>");
 
 
