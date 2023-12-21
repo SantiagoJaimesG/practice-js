@@ -59,21 +59,18 @@ let oper = (operacion, num1, num2)=>{
     }  
     return resultado;
 }
-document.write(oper(operacion,num1,num2));*/
-
+document.write(oper(operacion,num1,num2));
 const obtenerInfo = (materia)=>{
-    materias = {
+    const materias = {
         ingSoft: ["A","santiago","alicia","andres","juan"],
         progMovil: ["B","santiago","alicia","dalto","juan"],
         compGrafica: ["C","santiago","andres","dalto","juan"],
         ingEconomica: ["D","alicia","andres","dalto","juan"]
     }
-
     if (materias[materia] !== undefined){
         return [materias[materia],materia,materias];
     }else{return materias}
 }
-
 const mostrarInfo = (materia)=>{
     let info = obtenerInfo(materia)[1], profe = obtenerInfo(materia)[0][0],
     alumnos = obtenerInfo(materia)[0];
@@ -82,7 +79,6 @@ const mostrarInfo = (materia)=>{
     ${profe}:</b><br>${alumnos}<br><br>`;
     document.write(resultado);
 }
-
 const cantidadClases = (alumno)=>{
     let total = 0, informacion = obtenerInfo();
     clases = [];
@@ -90,9 +86,61 @@ const cantidadClases = (alumno)=>{
         if (informacion[infor].includes(alumno)){total++;clases.push(" "+infor);}
     }return `<b>${alumno} esta en ${total} clases:</b> ${clases}`;
 }
-
 mostrarInfo("ingSoft");
 mostrarInfo("progMovil");
 mostrarInfo("compGrafica");
 mostrarInfo("ingEconomica");
-document.write(cantidadClases("juan"));
+document.write(cantidadClases("juan"));*/
+
+let materias = {
+    ingSoft: ["A","santiago","alicia","andres","juan"],
+    progMovil: ["B","santiago","alicia","dalto","juan"],
+    compGrafica: ["C","santiago","andres","dalto","juan"],
+    ingEconomica: ["D","alicia","andres","dalto","juan"]
+}
+
+const inscribir = (alumno,materia)=>{
+    let personas = materias[materia];
+    if (personas.length >= 21){
+        document.write(`Lo siento <b>${alumno}</b>, las clases de 
+        <b>${materia}</b> estan llenas.`);
+    }else{
+        personas.push(alumno);
+        if (materia == "ingSoft"){
+            materias = {
+                ingSoft: personas,
+                progMovil: materias["progMovil"],
+                compGrafica: materias["compGrafica"],
+                ingEconomica: materias["ingEconomica"]
+            }
+        }else if (materia == "progMovil"){
+            materias = {
+                ingSoft: materias["ingSoft"],
+                progMovil: personas,
+                compGrafica: materias["compGrafica"],
+                ingEconomica: materias["ingEconomica"]
+            }
+        }else if (materia == "compGrafica"){
+            materias = {
+                ingSoft: materias["ingSoft"],
+                progMovil: materias["progMovil"],
+                compGrafica: personas,
+                ingEconomica: materias["ingEconomica"]
+            }
+        }else if (materia == "ingEconomica"){
+            materias = {
+                ingSoft: materias["ingSoft"],
+                progMovil: materias["progMovil"],
+                compGrafica: materias["compGrafica"],
+                ingEconomica: personas
+            }
+        }
+        document.write(`Felicidades ${alumno}, te haz inscrito a ${materia} correctamente.`)
+    }
+}
+
+document.write(materias["compGrafica"] + "<br><br>");
+inscribir("Andrea", "compGrafica");
+document.write("<br><br>" + materias["compGrafica"]);
+
+
